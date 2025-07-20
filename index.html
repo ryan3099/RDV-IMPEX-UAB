@@ -8,24 +8,33 @@
     body {
       font-family: sans-serif;
       margin: 0;
+      background: #f4f4f4;
+      color: #333;
       transition: background 0.3s, color 0.3s;
     }
     header {
       padding: 20px;
-      background: #333;
+      background: #888;
       color: white;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      text-align: center;
     }
     nav a {
       color: white;
-      margin-left: 15px;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    .description {
+      padding: 30px 20px;
+      background: #ddd;
+      text-align: center;
+      line-height: 1.6;
     }
     .gallery {
       display: flex;
@@ -33,6 +42,7 @@
       padding: 20px;
       justify-content: center;
       flex-wrap: wrap;
+      background: #fdfdfd;
     }
     .gallery img {
       max-width: 300px;
@@ -63,7 +73,7 @@
       margin-bottom: 15px;
     }
     .faq-question {
-      background: #f0f0f0;
+      background: #ccc;
       padding: 10px;
       cursor: pointer;
       font-weight: bold;
@@ -71,11 +81,11 @@
     .faq-answer {
       display: none;
       padding: 10px;
-      background: #fafafa;
-      border-left: 3px solid #ccc;
+      background: #eee;
+      border-left: 3px solid #999;
     }
     .counter-section {
-      background: #eee;
+      background: #e2e2e2;
       text-align: center;
       padding: 40px 20px;
     }
@@ -83,20 +93,29 @@
       font-size: 2rem;
       font-weight: bold;
     }
+    .map-container {
+      padding: 0;
+      margin: 0;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
     .dark-mode {
-      background: #121212;
+      background: #222;
       color: #e0e0e0;
     }
     .dark-mode .faq-question {
-      background: #1e1e1e;
+      background: #444;
     }
     .dark-mode .faq-answer {
-      background: #2a2a2a;
+      background: #333;
     }
     footer {
       padding: 20px;
       text-align: center;
-      background: #333;
+      background: #888;
       color: white;
     }
     .mode-toggle {
@@ -110,7 +129,8 @@
 </head>
 <body>
   <header>
-    <div>RDV IMPEX, UAB</div>
+    <div><h1>RDV IMPEX, UAB</h1></div>
+    <div>Kaunas LT-47184 | support@remersaii.shop | +37061537306</div>
     <nav>
       <a href="#gallery">Gallery</a>
       <a href="#faq">FAQ</a>
@@ -119,8 +139,14 @@
     </nav>
   </header>
 
+  <section class="description">
+    <p>
+      RDV IMPEX, UAB is a dynamic player in the field of <strong>Apparel, Piece Goods, and Notions</strong>, delivering top-tier textile products and solutions to clients across the globe. Based in Kaunas, Lithuania, we pride ourselves on our reputation for excellence, innovation, and client satisfaction. With a dedicated team and a robust logistics network, we ensure timely and efficient delivery to a wide range of countries.
+    </p>
+  </section>
+
   <section id="gallery" class="gallery">
-    <img src="https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg?fit=crop&h=1000&mark=https%3A%2F%2Fassets.imgix.net%2F~text%3Fbg%3D80000000%26txt%3DGratis%2Bstockfoto%2527s%26txtalign%3Dcenter%26txtclr%3Dfff%26txtfont%3DAvenir-Heavy%26txtpad%3D20%26txtsize%3D120%26w%3D1300&markalign=center%2Cmiddle&txt=pexels.com&txtalign=center&txtclr=eeffffff&txtfont=Avenir-Heavy&txtshad=10&txtsize=60&w=1500" alt="Gallery 1">
+    <img src="https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg" alt="Gallery 1">
     <img src="https://img.alicdn.com/imgextra/i1/6000000000066/O1CN01JMXFtx1CMGmzF3Wyk_!!6000000000066-0-tbvideo.jpg" alt="Gallery 2">
     <img src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1995/crop169/710.jpg" alt="Gallery 3">
   </section>
@@ -132,7 +158,7 @@
   <section id="faq" class="faq">
     <div class="faq-item">
       <div class="faq-question" onclick="toggleAnswer(this)">What products do you specialize in?</div>
-      <div class="faq-answer">We specialize in high-quality import/export of industrial and retail goods across Europe.</div>
+      <div class="faq-answer">We specialize in high-quality apparel, textiles, and industrial fabric distribution worldwide.</div>
     </div>
     <div class="faq-item">
       <div class="faq-question" onclick="toggleAnswer(this)">How can I reach your support team?</div>
@@ -141,10 +167,14 @@
   </section>
 
   <section id="counters" class="counter-section">
-    <div>Projects Completed: <span class="counter" data-target="1540">0</span></div>
-    <div>Clients Served: <span class="counter" data-target="1180">0</span></div>
-    <div>Countries Reached: <span class="counter" data-target="17">0</span></div>
+    <div>Projects Completed: <span class="counter" data-target="10">0</span></div>
+    <div>Clients Served: <span class="counter" data-target="30">0</span></div>
+    <div>Countries Reached: <span class="counter" data-target="4">0</span></div>
   </section>
+
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps?q=Kaunas+LT-47184&output=embed"></iframe>
+  </div>
 
   <footer>
     &copy; 2025 RDV IMPEX, UAB | support@remersaii.shop | +37061537306 | Kaunas LT-47184
