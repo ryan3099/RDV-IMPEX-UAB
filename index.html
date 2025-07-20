@@ -1,67 +1,207 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAP Garland, LLC</title>
+  <title>RDV IMPEX, UAB</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-      color: #333;
+      transition: background 0.3s, color 0.3s;
     }
     header {
-      background-color: #003366;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1, h2 {
-      color: #003366;
-    }
-    .contact {
-      background: #fff;
       padding: 20px;
-      border-left: 5px solid #003366;
-      margin-top: 30px;
+      background: #333;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .gallery {
+      display: flex;
+      gap: 10px;
+      padding: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .gallery img {
+      max-width: 300px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .faq {
+      padding: 20px;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+    }
+    .faq-question {
+      background: #f0f0f0;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .faq-answer {
+      display: none;
+      padding: 10px;
+      background: #fafafa;
+      border-left: 3px solid #ccc;
+    }
+    .counter-section {
+      background: #eee;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+    .dark-mode .faq-question {
+      background: #1e1e1e;
+    }
+    .dark-mode .faq-answer {
+      background: #2a2a2a;
     }
     footer {
-      background-color: #003366;
-      color: white;
+      padding: 20px;
       text-align: center;
-      padding: 15px;
-      margin-top: 50px;
+      background: #333;
+      color: white;
+    }
+    .mode-toggle {
+      background: #555;
+      border: none;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>CAP Garland, LLC</h1>
-    <p>Private Investment Fund</p>
+    <div>RDV IMPEX, UAB</div>
+    <nav>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a href="#counters">Stats</a>
+      <button class="mode-toggle" onclick="toggleMode()">Toggle Mode</button>
+    </nav>
   </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>CAP Garland, LLC is a Washington-based private investment fund focused on delivering value through diversified investment strategies.</p>
+  <section id="gallery" class="gallery">
+    <img src="https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg?fit=crop&h=1000&mark=https%3A%2F%2Fassets.imgix.net%2F~text%3Fbg%3D80000000%26txt%3DGratis%2Bstockfoto%2527s%26txtalign%3Dcenter%26txtclr%3Dfff%26txtfont%3DAvenir-Heavy%26txtpad%3D20%26txtsize%3D120%26w%3D1300&markalign=center%2Cmiddle&txt=pexels.com&txtalign=center&txtclr=eeffffff&txtfont=Avenir-Heavy&txtshad=10&txtsize=60&w=1500" alt="Gallery 1">
+    <img src="https://img.alicdn.com/imgextra/i1/6000000000066/O1CN01JMXFtx1CMGmzF3Wyk_!!6000000000066-0-tbvideo.jpg" alt="Gallery 2">
+    <img src="https://d2lsod3xpjaepj.cloudfront.net/files/assets/2000/1995/crop169/710.jpg" alt="Gallery 3">
+  </section>
 
-    <h2>Contact</h2>
-    <div class="contact">
-      <p><strong>Address:</strong> 915 W 2nd Ave, Spokane, WA 99201</p>
-      <p><strong>Email:</strong> <a href="mailto:ryanberg@capgarland.shop">ryanberg@capgarland.shop</a></p>
-      <p><strong>Phone:</strong> (509) 822-3850</p>
+  <div class="modal" id="imageModal" onclick="this.style.display='none'">
+    <img id="modalImg" src="" alt="Preview">
+  </div>
+
+  <section id="faq" class="faq">
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleAnswer(this)">What products do you specialize in?</div>
+      <div class="faq-answer">We specialize in high-quality import/export of industrial and retail goods across Europe.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleAnswer(this)">How can I reach your support team?</div>
+      <div class="faq-answer">Email us at support@remersaii.shop or call +37061537306</div>
     </div>
   </section>
 
+  <section id="counters" class="counter-section">
+    <div>Projects Completed: <span class="counter" data-target="1540">0</span></div>
+    <div>Clients Served: <span class="counter" data-target="1180">0</span></div>
+    <div>Countries Reached: <span class="counter" data-target="17">0</span></div>
+  </section>
+
   <footer>
-    &copy; 2025 CAP Garland, LLC. All rights reserved.
+    &copy; 2025 RDV IMPEX, UAB | support@remersaii.shop | +37061537306 | Kaunas LT-47184
   </footer>
+
+  <script>
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('modalImg').src = img.src;
+        document.getElementById('imageModal').style.display = 'flex';
+      });
+    });
+
+    function toggleAnswer(el) {
+      const answer = el.nextElementSibling;
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    const counters = document.querySelectorAll('.counter');
+    const speed = 100;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const inc = Math.ceil(target / speed);
+            if (count < target) {
+              counter.innerText = count + inc;
+              setTimeout(updateCount, 30);
+            } else {
+              counter.innerText = target;
+            }
+          };
+          updateCount();
+          observer.unobserve(counter);
+        }
+      });
+    }, { threshold: 1 });
+
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
